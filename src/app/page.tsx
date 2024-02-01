@@ -1,3 +1,7 @@
 export default function HomePage() {
-  return <div>Next.js Starter</div>;
+  return (
+    <div>
+      <span>Next.js Starter</span>
+    </div>
+  );
 }

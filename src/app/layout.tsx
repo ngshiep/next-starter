@@ -1,3 +1,4 @@
+import HeaderComponent from "@/components/Header";
 import ThemeRegistry from "@/components/theme-registry/theme.registry";
 import * as React from "react";
 
@@ -14,7 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <ThemeRegistry>
+          <HeaderComponent></HeaderComponent>
+          {children}
+        </ThemeRegistry>
       </body>
     </html>
   );
