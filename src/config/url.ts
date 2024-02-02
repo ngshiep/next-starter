@@ -3,7 +3,7 @@ export const url = {
     homepage: "/",
     profile: "profile",
     playlist: "playlist",
-    likes: "likes",
+    likes: "like",
     upload: "upload",
     account: "account",
   },
