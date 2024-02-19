@@ -1,6 +1,7 @@
-import FooterComponent from "@/components/Footer";
-import HeaderComponent from "@/components/Header";
+import FooterComponent from "@/components/footer";
+import HeaderComponent from "@/components/header";
 import ThemeRegistry from "@/components/theme-registry/theme.registry";
+import { Container } from "@mui/material";
 import * as React from "react";
 
 export const metadata = {
@@ -17,8 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeRegistry>
-          {children}
-          <FooterComponent/>
+          <HeaderComponent></HeaderComponent>
+          <Container>{children}</Container>
+          <FooterComponent />
         </ThemeRegistry>
       </body>
     </html>
