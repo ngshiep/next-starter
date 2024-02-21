@@ -1,4 +1,4 @@
-import HeaderComponent from "@/components/Header";
+import HeaderComponent from "@/components/header";
 
 function RootLayout({ children }: { children: React.ReactNode }) {
   return (

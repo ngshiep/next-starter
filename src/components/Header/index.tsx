@@ -160,14 +160,22 @@ export default function HeaderComponent() {
       <AppBar position="static">
         <Container>
           <Toolbar>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}
+            <Link
+              href={"/"}
+              style={{
+                textDecoration: "none",
+                color: "unset",
+              }}
             >
-              MUI
-            </Typography>
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ display: { xs: "none", sm: "block" } }}
+              >
+                MUI
+              </Typography>
+            </Link>
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
