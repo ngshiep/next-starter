@@ -1,6 +1,7 @@
 import FooterComponent from "@/components/footer";
 import HeaderComponent from "@/components/header";
 import ThemeRegistry from "@/components/theme-registry/theme.registry";
+import NextAuthWrapper from "@/services/Next.Auth.Wrapper";
 import { Container } from "@mui/material";
 import * as React from "react";
 
@@ -18,9 +19,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeRegistry>
-          <HeaderComponent></HeaderComponent>
-          <Container>{children}</Container>
-          <FooterComponent />
+          <NextAuthWrapper>
+            <HeaderComponent></HeaderComponent>
+            <Container>{children}</Container>
+            <FooterComponent />
+          </NextAuthWrapper>
         </ThemeRegistry>
       </body>
     </html>

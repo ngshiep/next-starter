@@ -13,6 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { alpha, styled } from "@mui/material/styles";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import * as React from "react";
 
@@ -57,6 +58,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function HeaderComponent() {
+  const { data: session } = useSession();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -186,23 +188,41 @@ export default function HeaderComponent() {
               />
             </Search>
             <Box sx={{ flexGrow: 1 }} />
-            <Box
-              sx={{
-                display: { xs: "none", md: "flex" },
-                alignItems: "center",
-                gap: "20px",
-                cursor: "pointer",
-                "> a": {
-                  textDecoration: "none",
-                  color: "unset",
-                },
-              }}
-            >
-              <Link href={url.web.playlist}>PlayList</Link>
-              <Link href={url.web.likes}>Likes</Link>
-              <Link href={url.web.upload}>Upload</Link>
-              <Avatar onClick={handleProfileMenuOpen}>HH</Avatar>
-            </Box>
+            {session && (
+              <Box
+                sx={{
+                  display: { xs: "none", md: "flex" },
+                  alignItems: "center",
+                  gap: "20px",
+                  cursor: "pointer",
+                  "> a": {
+                    textDecoration: "none",
+                    color: "unset",
+                  },
+                }}
+              >
+                <Link href={url.web.playlist}>PlayList</Link>
+                <Link href={url.web.likes}>Likes</Link>
+                <Link href={url.web.upload}>Upload</Link>
+                <Avatar onClick={handleProfileMenuOpen}>HH</Avatar>
+              </Box>
+            )}
+            {!session && (
+              <Box
+                sx={{
+                  display: { xs: "none", md: "flex" },
+                  alignItems: "center",
+                  gap: "20px",
+                  cursor: "pointer",
+                  "> a": {
+                    textDecoration: "none",
+                    color: "unset",
+                  },
+                }}
+              >
+                <Link href={"/api/auth/signin"}>Login</Link>
+              </Box>
+            )}
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
               <IconButton
                 size="large"
